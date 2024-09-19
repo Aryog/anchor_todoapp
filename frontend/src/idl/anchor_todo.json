@@ -1,0 +1,149 @@
+{
+  "address": "DMeNA3KKDFkK6wNLYVGts4zHmfLkY64c1wTfcqapubYB",
+  "metadata": {
+    "name": "anchor_todo",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "Created with Anchor"
+  },
+  "instructions": [
+    {
+      "name": "add_todo",
+      "discriminator": [
+        188,
+        16,
+        45,
+        145,
+        4,
+        5,
+        188,
+        75
+      ],
+      "accounts": [
+        {
+          "name": "todo_account",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "content",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "initialize",
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "todo_account",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "user",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "mark_todo",
+      "discriminator": [
+        70,
+        24,
+        206,
+        243,
+        92,
+        29,
+        249,
+        110
+      ],
+      "accounts": [
+        {
+          "name": "todo_account",
+          "writable": true
+        }
+      ],
+      "args": [
+        {
+          "name": "index",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "TodoAccount",
+      "discriminator": [
+        31,
+        86,
+        84,
+        40,
+        187,
+        31,
+        251,
+        132
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "TodoNotFound",
+      "msg": "Todo not found"
+    }
+  ],
+  "types": [
+    {
+      "name": "TodoAccount",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "todos",
+            "type": {
+              "vec": {
+                "defined": {
+                  "name": "TodoItem"
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "TodoItem",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "content",
+            "type": "string"
+          },
+          {
+            "name": "marked",
+            "type": "bool"
+          }
+        ]
+      }
+    }
+  ]
+}

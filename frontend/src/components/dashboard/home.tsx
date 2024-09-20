@@ -6,11 +6,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Moon, Sun } from "lucide-react";
 import dynamic from 'next/dynamic';
+import TodoList from './todolist';
+import { TodoItem } from './todolist';
 
 export default function Home() {
 	const WalletMultiButton = dynamic(() => import('@solana/wallet-adapter-react-ui').then(mod => mod.WalletMultiButton), { ssr: false });
 	const [todo, setTodo] = useState('');
-	const [todos, setTodos] = useState<String[]>();
+	const [todos, setTodos] = useState<TodoItem[]>();
 	const [isDarkMode, setIsDarkMode] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 	const { addTodo, markTodo, getAllTodos, connected, publicKey, wallet, provider, program, initializeTodo } = useTodoProgram();
@@ -109,6 +111,9 @@ export default function Home() {
 							</Button>
 						</div>
 						<WalletMultiButton className="!bg-purple-500 hover:!bg-purple-600 text-white rounded-lg px-4 py-2" />
+					</div>
+					<div className="w-full h-full bg-gray-100 py-6 flex flex-col sm:py-12">
+						{todos && <TodoList initialTodos={todos} />}
 					</div>
 				</Card>
 			</div>

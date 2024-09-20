@@ -1,14 +1,14 @@
-{
+export type AnchorTodo = {
   "address": "DMeNA3KKDFkK6wNLYVGts4zHmfLkY64c1wTfcqapubYB",
   "metadata": {
-    "name": "anchor_todo",
+    "name": "anchorTodo",
     "version": "0.1.0",
     "spec": "0.1.0",
     "description": "Created with Anchor"
   },
   "instructions": [
     {
-      "name": "add_todo",
+      "name": "addTodo",
       "discriminator": [
         188,
         16,
@@ -21,7 +21,7 @@
       ],
       "accounts": [
         {
-          "name": "todo_account",
+          "name": "todoAccount",
           "writable": true
         }
       ],
@@ -31,33 +31,6 @@
           "type": "string"
         }
       ]
-    },
-    {
-      "name": "get_all_todos",
-      "discriminator": [
-        215,
-        245,
-        144,
-        147,
-        225,
-        206,
-        205,
-        177
-      ],
-      "accounts": [
-        {
-          "name": "todo_account",
-          "writable": true
-        }
-      ],
-      "args": [],
-      "returns": {
-        "vec": {
-          "defined": {
-            "name": "TodoItem"
-          }
-        }
-      }
     },
     {
       "name": "initialize",
@@ -73,7 +46,7 @@
       ],
       "accounts": [
         {
-          "name": "todo_account",
+          "name": "todoAccount",
           "writable": true,
           "pda": {
             "seeds": [
@@ -95,14 +68,14 @@
           "signer": true
         },
         {
-          "name": "system_program",
+          "name": "systemProgram",
           "address": "11111111111111111111111111111111"
         }
       ],
       "args": []
     },
     {
-      "name": "mark_todo",
+      "name": "markTodo",
       "discriminator": [
         70,
         24,
@@ -115,7 +88,7 @@
       ],
       "accounts": [
         {
-          "name": "todo_account",
+          "name": "todoAccount",
           "writable": true
         }
       ],
@@ -129,7 +102,7 @@
   ],
   "accounts": [
     {
-      "name": "TodoAccount",
+      "name": "todoAccount",
       "discriminator": [
         31,
         86,
@@ -145,13 +118,13 @@
   "errors": [
     {
       "code": 6000,
-      "name": "TodoNotFound",
+      "name": "todoNotFound",
       "msg": "Todo not found"
     }
   ],
   "types": [
     {
-      "name": "TodoAccount",
+      "name": "todoAccount",
       "type": {
         "kind": "struct",
         "fields": [
@@ -160,7 +133,7 @@
             "type": {
               "vec": {
                 "defined": {
-                  "name": "TodoItem"
+                  "name": "todoItem"
                 }
               }
             }
@@ -169,7 +142,7 @@
       }
     },
     {
-      "name": "TodoItem",
+      "name": "todoItem",
       "type": {
         "kind": "struct",
         "fields": [
@@ -185,4 +158,4 @@
       }
     }
   ]
-}
+};

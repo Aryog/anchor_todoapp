@@ -31,11 +31,15 @@ pub mod anchor_todo {
             Err(ErrorCode::TodoNotFound.into())
         }
     }
+    pub fn get_all_todos(ctx: Context<GetAllTodos>) -> Result<Vec<TodoItem>> {
+        let todo_account = &ctx.accounts.todo_account;
+        Ok(todo_account.todos.clone())
+    }
 }
 
-#[derive(Accounts)]
+#[derive(Accounts)] // Struct treated as the set of accounts
 pub struct Initialize<'info> {
-    #[account(init, payer = user, space = 9000)]
+    #[account(init, payer = user, space = 9000, seeds=[b"todo"], bump)]
     pub todo_account: Account<'info, TodoAccount>,
     #[account(mut)]
     pub user: Signer<'info>,
@@ -50,6 +54,12 @@ pub struct AddTodo<'info> {
 
 #[derive(Accounts)]
 pub struct MarkTodo<'info> {
+    #[account(mut)]
+    pub todo_account: Account<'info, TodoAccount>,
+}
+
+#[derive(Accounts)]
+pub struct GetAllTodos<'info> {
     #[account(mut)]
     pub todo_account: Account<'info, TodoAccount>,
 }

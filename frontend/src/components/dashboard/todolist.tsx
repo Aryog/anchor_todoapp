@@ -6,14 +6,16 @@ export interface TodoItem {
 }
 export interface todoListProps {
 	initialTodos: TodoItem[];
+	markTodo: (id: number) => void;
 }
-const TodoList = ({ initialTodos }: todoListProps) => {
+const TodoList = ({ initialTodos, markTodo }: todoListProps) => {
 	const [todos, setTodos] = useState(initialTodos);
 
 	const toggleTodo = (index: any) => {
 		const newTodos = [...todos];
 		newTodos[index].marked = !newTodos[index].marked;
 		setTodos(newTodos);
+		markTodo(index);
 	};
 
 	const deleteTodo = (index: any) => {

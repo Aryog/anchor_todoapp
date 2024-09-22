@@ -113,7 +113,7 @@ export default function Home() {
 						<WalletMultiButton className="!bg-purple-500 hover:!bg-purple-600 text-white rounded-lg px-4 py-2" />
 					</div>
 					<div className="w-full h-full bg-gray-100 py-6 flex flex-col sm:py-12">
-						{todos && <TodoList initialTodos={todos} />}
+						{todos && <TodoList initialTodos={todos} markTodo={markTodo} />}
 					</div>
 				</Card>
 			</div>
